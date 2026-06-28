@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.mycompany.fintrack.controller.NovaTransacaoController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <Label text="Nova Transação" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    <TextField fx:id="campoDescricao" promptText="Descrição"/>
+    <TextField fx:id="campoValor" promptText="Valor (ex: 99.90)"/>
+    <DatePicker fx:id="campoData" promptText="Data"/>
+    <RadioButton fx:id="radioReceita" text="Receita">
+        <toggleGroup>
+            <ToggleGroup fx:id="tipoGrupo"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="radioDespesa" text="Despesa" toggleGroup="$tipoGrupo"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Salvar" onAction="#salvar"/>
+        <Button text="Cancelar" onAction="#cancelar"/>
+    </HBox>
+</VBox>
