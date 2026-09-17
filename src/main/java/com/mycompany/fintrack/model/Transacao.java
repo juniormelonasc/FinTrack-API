@@ -1,38 +1,40 @@
 package com.mycompany.fintrack.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "transacoes")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Transacao {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 100)
     private String descricao;
+
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal valor;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
     private TipoTransacao tipo;
+
+    @Column(nullable = false)
     private LocalDate data;
 
-    // construtores getters e setters
-    public Transacao() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
-    public Transacao(String descricao, BigDecimal valor, TipoTransacao tipo, LocalDate data) {
-        this.descricao = descricao;
-        this.valor = valor;
-        this.tipo = tipo;
-        this.data = data;
-    }
-
-    // getters e setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public String getDescricao() { return descricao; }
-    public void setDescricao(String descricao) { this.descricao = descricao; }
-    public BigDecimal getValor() { return valor; }
-    public void setValor(BigDecimal valor) { this.valor = valor; }
-    public TipoTransacao getTipo() { return tipo; }
-    public void setTipo(TipoTransacao tipo) { this.tipo = tipo; }
-    public LocalDate getData() { return data; }
-    public void setData(LocalDate data) { this.data = data; }
-
-    public boolean isReceita() {
-        return tipo == TipoTransacao.RECEITA;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 }
