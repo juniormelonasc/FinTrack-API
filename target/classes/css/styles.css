@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Trends';
+    src: url('../fonts/Trends.ttf');
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+#tituloLabel {
+    -fx-font-family: "Trends";
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f1c40f;
+}
+
+.root {
+    -fx-font-family: "Poppins";
+}
+
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.table-view {
+    -fx-border-color: #bdc3c7;
+}
+
+.table-column-header {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+}
